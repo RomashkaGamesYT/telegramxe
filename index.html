@@ -1,5 +1,4 @@
-<html lang="ru">
-<head>
+<html lang="ru"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ХЕ Трекер</title>
@@ -10,33 +9,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-body{
-font-family:'Inter',sans-serif;
+body { font-family: 'Inter', sans-serif; }
+
+::-webkit-scrollbar { width: 0px; background: transparent; }
+
+.glass-dock {
+background: rgba(24,24,27,0.65);
+backdrop-filter: blur(16px);
+border: 1px solid rgba(255,255,255,0.08);
 }
 
-::-webkit-scrollbar{
-width:0px;
-background:transparent;
+.glass-card {
+background: linear-gradient(145deg, rgba(39,39,42,0.4) 0%, rgba(24,24,27,0.8) 100%);
+border: 1px solid rgba(255,255,255,0.05);
 }
 
-.glass-dock{
-background:rgba(24,24,27,0.65);
-backdrop-filter:blur(16px);
-border:1px solid rgba(255,255,255,0.08);
-}
+.fade-in { animation: fadeIn .2s ease-in-out; }
 
-.glass-card{
-background:linear-gradient(145deg,rgba(39,39,42,0.4)0%,rgba(24,24,27,0.8)100%);
-border:1px solid rgba(255,255,255,0.05);
-}
-
-.fade-in{
-animation:fadeIn .2s ease-in-out;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(4px);}
-to{opacity:1;transform:translateY(0);}
+@keyframes fadeIn {
+from {opacity:0; transform:translateY(4px);}
+to {opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
@@ -45,7 +37,7 @@ to{opacity:1;transform:translateY(0);}
 
 <div class="w-full max-w-md relative pb-28 flex flex-col overflow-x-hidden">
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <div id="view-home" class="app-view flex flex-col w-full fade-in">
 
@@ -54,10 +46,9 @@ to{opacity:1;transform:translateY(0);}
 <header class="flex items-center justify-between">
 
 <div>
-<h1 class="text-xl font-medium text-zinc-100">
+<h1 class="text-xl text-zinc-100">
 Привет, <span id="dashboard-name">User</span>!
 </h1>
-
 <p class="text-xs text-zinc-500">Сегодня</p>
 </div>
 
@@ -90,7 +81,7 @@ class="mt-4 bg-zinc-100 text-zinc-900 px-5 py-2 rounded-full text-xs flex gap-2 
 </main>
 </div>
 
-<!-- ================= PLATE ================= -->
+<!-- PLATE -->
 
 <div id="view-plate" class="app-view hidden flex-col w-full p-5 pt-8 fade-in">
 
@@ -139,7 +130,7 @@ class="bg-zinc-100 text-zinc-900 py-2 rounded-xl text-xs">
 
 </div>
 
-<!-- ================= CALCULATOR ================= -->
+<!-- CALCULATOR -->
 
 <div id="view-calculator" class="app-view hidden flex-col w-full p-5 pt-8 fade-in">
 
@@ -153,10 +144,7 @@ class="bg-zinc-100 text-zinc-900 py-2 rounded-xl text-xs">
 
 <label class="text-xs text-zinc-500">Вес</label>
 
-<input id="calc-weight"
-type="number"
-oninput="calculateXE()"
-placeholder="0"
+<input id="calc-weight" type="number" oninput="calculateXE()" placeholder="0"
 class="w-full bg-transparent text-lg text-zinc-200 outline-none">
 
 </div>
@@ -165,10 +153,7 @@ class="w-full bg-transparent text-lg text-zinc-200 outline-none">
 
 <label class="text-xs text-zinc-500">Углеводы (100г)</label>
 
-<input id="calc-carbs"
-type="number"
-oninput="calculateXE()"
-placeholder="0"
+<input id="calc-carbs" type="number" oninput="calculateXE()" placeholder="0"
 class="w-full bg-transparent text-lg text-zinc-200 outline-none">
 
 </div>
@@ -177,17 +162,11 @@ class="w-full bg-transparent text-lg text-zinc-200 outline-none">
 
 <div class="bg-zinc-900 p-1 rounded-xl flex border border-zinc-800">
 
-<button onclick="setXE(10)" class="flex-1 text-xs py-2">
-10г
-</button>
+<button onclick="setXE(10)" class="flex-1 text-xs py-2">10г</button>
 
-<button onclick="setXE(11)" class="flex-1 text-xs py-2 bg-zinc-800">
-11г
-</button>
+<button onclick="setXE(11)" class="flex-1 text-xs py-2 bg-zinc-800">11г</button>
 
-<button onclick="setXE(12)" class="flex-1 text-xs py-2">
-12г
-</button>
+<button onclick="setXE(12)" class="flex-1 text-xs py-2">12г</button>
 
 </div>
 
@@ -197,10 +176,7 @@ class="w-full bg-transparent text-lg text-zinc-200 outline-none">
 
 <div>
 
-<span id="calc-result" class="text-2xl text-white">
-0.0
-</span>
-
+<span id="calc-result" class="text-2xl text-white">0.0</span>
 <span class="text-zinc-500">ХЕ</span>
 
 </div>
@@ -211,7 +187,7 @@ class="w-full bg-transparent text-lg text-zinc-200 outline-none">
 
 </div>
 
-<!-- ================= PROFILE ================= -->
+<!-- PROFILE -->
 
 <div id="view-profile" class="app-view hidden flex-col w-full p-5 pt-8 fade-in">
 
@@ -226,41 +202,12 @@ class="bg-zinc-900 border border-zinc-800 rounded-xl p-3">
 
 <div class="h-12"></div>
 
-<!-- ================= DOCK ================= -->
-
 <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-md rounded-2xl p-1 flex glass-dock">
 
-<button id="dock-btn-home"
-onclick="switchTab('view-home',this)"
-class="dock-btn flex-1 py-2 bg-zinc-800/50 text-zinc-100">
-
-Главная
-
-</button>
-
-<button id="dock-btn-plate"
-onclick="switchTab('view-plate',this)"
-class="dock-btn flex-1 py-2 text-zinc-500">
-
-Тарелка
-
-</button>
-
-<button id="dock-btn-calc"
-onclick="switchTab('view-calculator',this)"
-class="dock-btn flex-1 py-2 text-zinc-500">
-
-Калькулятор
-
-</button>
-
-<button id="dock-btn-profile"
-onclick="switchTab('view-profile',this)"
-class="dock-btn flex-1 py-2 text-zinc-500">
-
-Профиль
-
-</button>
+<button onclick="switchTab('view-home',this)" class="flex-1 py-2 bg-zinc-800/50 text-zinc-100">Главная</button>
+<button onclick="switchTab('view-plate',this)" class="flex-1 py-2 text-zinc-500">Тарелка</button>
+<button onclick="switchTab('view-calculator',this)" class="flex-1 py-2 text-zinc-500">Калькулятор</button>
+<button onclick="switchTab('view-profile',this)" class="flex-1 py-2 text-zinc-500">Профиль</button>
 
 </nav>
 
@@ -268,88 +215,41 @@ class="dock-btn flex-1 py-2 text-zinc-500">
 
 <script>
 
-function switchTab(id,el){
-
-document.querySelectorAll(".app-view")
-.forEach(v=>{
+function switchTab(id){
+document.querySelectorAll(".app-view").forEach(v=>{
 v.classList.add("hidden")
 v.classList.remove("flex")
 })
-
 document.getElementById(id).classList.remove("hidden")
 document.getElementById(id).classList.add("flex")
-
 }
 
 function updateProfileName(name){
-
 name=name.trim()||"User"
-
 document.getElementById("dashboard-name").innerText=name
-
-document.getElementById("dashboard-avatar").innerText=
-name.substring(0,2).toUpperCase()
-
-}
-
-let totalPlateXE=0
-
-function addFoodToPlate(){
-
-const name=document.getElementById("food-name").value||"Без названия"
-
-const weight=parseFloat(document.getElementById("food-weight").value)||0
-
-const carbs=parseFloat(document.getElementById("food-carbs").value)||0
-
-if(weight===0||carbs===0)return
-
-const xe=((weight*carbs)/100)/10
-
-totalPlateXE+=xe
-
-document.getElementById("plate-total-xe").innerText=
-totalPlateXE.toFixed(1)
-
-const item=document.createElement("div")
-
-item.className="flex justify-between p-3 border border-zinc-800 rounded-xl mt-2"
-
-item.innerHTML=`
-<span>${name}</span>
-<span>${xe.toFixed(1)} ХЕ</span>
-`
-
-document.getElementById("plate-food-list").appendChild(item)
-
+document.getElementById("dashboard-avatar").innerText=name.substring(0,2).toUpperCase()
 }
 
 let xeDivider=11
 
 function setXE(val){
-
 xeDivider=val
 calculateXE()
-
 }
 
 function calculateXE(){
 
 const weight=parseFloat(document.getElementById("calc-weight").value)||0
-
 const carbs=parseFloat(document.getElementById("calc-carbs").value)||0
 
 if(weight===0||carbs===0){
-
 document.getElementById("calc-result").innerText="0.0"
 return
-
 }
 
 const xe=((carbs*weight)/100)/xeDivider
 
-document.getElementById("calc-result").innerText=
-xe.toFixed(1)
+document.getElementById("calc-result").innerText=xe.toFixed(1)
 
 }
 
